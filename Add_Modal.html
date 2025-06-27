@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Modal Bootstrap Assessment</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+<div class="d-flex min-vh-100">
+<div class="container mt-auto py-5">
+      <h2 class="mb-4">Contact Us</h2>
+      <form id="contactForm" onsubmit="showModal(event)">
+            <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                  <label for="name">Name</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+                  <label for="email">Email address</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                  <textarea class="form-control" placeholder="Your message here" id="message" style="height: 150px" required></textarea>
+                  <label for="message">Message</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+</div>
+</div>
+
+<!-- TODO: Implement Task 4 here -->
+<div class="modal fade" id="submittedModal" tabindex="-1" aria-labelledby="submittedModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+            <div class="modal-content">
+                  <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="submittedModalLabel">Submission Details</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                        <p><strong>Name:</strong> <span id="modalName"></span></p>
+                        <p><strong>Email:</strong> <span id="modalEmail"></span></p>
+                        <p><strong>Message:</strong></p>
+                        <p id="modalMessage"></p>
+                  </div>
+                  <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  </div>
+            </div>
+      </div>
+</div>
+
+<script>
+function showModal(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      document.getElementById('modalName').textContent = name;
+      document.getElementById('modalEmail').textContent = email;
+      document.getElementById('modalMessage').textContent = message;
+
+      const modal = new bootstrap.Modal(document.getElementById('submittedModal'));
+      modal.show();
+}
+</script>
+
+</body>
